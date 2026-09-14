@@ -20,12 +20,10 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Check Gradle
-        run: |
-          echo "=== ROOT FILES ==="
-          ls -la
-          echo "=== GRADLE TASKS ==="
-          gradle tasks --all
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
 
       - name: Build APK
         run: gradle :app:assembleDebug
